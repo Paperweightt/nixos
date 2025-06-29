@@ -1,0 +1,25 @@
+{
+  description = "test config to update misterio77's starter config to 25.05";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # home-manager.url = "github:nix-community/home-manager/release-25.05";
+    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = {
+    self,
+    nixpkgs,
+    # home-manager,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+  in {
+    nixosConfigurations = {
+      my-host = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [./nixos/configuration.nix];
+      };
+    };
+  };
+}
