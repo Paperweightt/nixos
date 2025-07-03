@@ -30,9 +30,8 @@
     ripgrep
     gcc
     git
-  ]
+  ];
 
-  networking.hostName = "nixos_vim"
   time.timeZone = "America/Indianapolis";
 
   boot.loader.efi.canTouchEfiVariables = true;
