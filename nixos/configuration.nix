@@ -26,26 +26,31 @@
 
   environment.systemPackages = with pkgs; [
     neovim
-    tree-sitter
-    ripgrep
-    gcc
+    tree-sitter #neovim req
+    ripgrep #neovim req
+    gcc #neovim req
     git
+    gh
   ];
 
   time.timeZone = "America/Indianapolis";
 
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.system-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   services.printing.enable = true;
 
   networking.hostName = "paper";
+
+  home-manager.users = {
+      paper.imports = [../home-manager/paper.nix];
+  };
 
   users.users = {
     paper = {
       initialPassword = "123";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [ ];
-      extraGroups = ["wheel", "networkmanager"];
+      extraGroups = ["wheel" "networkmanager"];
     };
   };
 
