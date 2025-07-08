@@ -15,6 +15,8 @@
     homeDirectory = "/home/paper";
   };
 
+  xdg.configFile."nvim".source = inputs.nvim.configDir
+
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;

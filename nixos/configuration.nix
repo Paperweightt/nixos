@@ -26,9 +26,9 @@
 
   environment.systemPackages = with pkgs; [
     neovim
-    tree-sitter #neovim req
-    ripgrep #neovim req
-    gcc #neovim req
+    tree-sitter #neovim
+    ripgrep #neovim
+    gcc #neovim
     git
     gh
   ];
